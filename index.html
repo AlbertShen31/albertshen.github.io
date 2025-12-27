@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Albert Shen · Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f6f3ec;
+      --panel: #ffffff;
+      --ink: #13110c;
+      --muted: #5b554a;
+      --accent: #f25c54;
+      --accent-2: #3d8bfd;
+      --border: #e5ddcf;
+      --shadow: 0 20px 45px rgba(12, 10, 8, 0.08);
+      --radius: 18px;
+      --max-width: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 20% 20%, rgba(242, 92, 84, 0.15), transparent 25%),
+                  radial-gradient(circle at 80% 0%, rgba(61, 139, 253, 0.16), transparent 28%),
+                  var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      padding: 32px 18px 64px;
+    }
+
+    header {
+      max-width: var(--max-width);
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      font-size: 18px;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      margin-left: 12px;
+      font-size: 14px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      transition: all 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--ink);
+      background: rgba(19, 17, 12, 0.06);
+    }
+
+    .shell {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      gap: 20px;
+    }
+
+    section {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      display: grid;
+      gap: 14px;
+      background: linear-gradient(115deg, rgba(242, 92, 84, 0.07), rgba(61, 139, 253, 0.05)), var(--panel);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 60% 50%, rgba(61, 139, 253, 0.08), transparent 40%);
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(32px, 5vw, 46px);
+      letter-spacing: -0.04em;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 720px;
+      font-size: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .meta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .meta .pill {
+      background: rgba(19, 17, 12, 0.08);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 600;
+      color: var(--ink);
+      font-size: 14px;
+    }
+
+    .meta .muted {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn {
+      border: none;
+      outline: none;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn.primary {
+      background: var(--ink);
+      color: var(--panel);
+      box-shadow: 0 10px 25px rgba(19, 17, 12, 0.2);
+    }
+
+    .btn.primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(19, 17, 12, 0.25);
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .project-card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 18px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      background: #fffdfa;
+    }
+
+    .project-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 26px rgba(12, 10, 8, 0.12);
+      border-color: rgba(242, 92, 84, 0.35);
+    }
+
+    .project-card h3 {
+      margin: 0 0 6px;
+      font-size: 17px;
+    }
+
+    .project-card p {
+      margin: 0 0 10px;
+      color: var(--muted);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: rgba(61, 139, 253, 0.12);
+      color: #0f3b83;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+
+    .timeline-item {
+      border-left: 3px solid var(--accent-2);
+      padding-left: 12px;
+    }
+
+    .timeline-item h3 {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .timeline-item .role {
+      color: var(--muted);
+      margin: 0 0 6px;
+    }
+
+    .timeline-item ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill {
+      background: rgba(19, 17, 12, 0.08);
+      padding: 8px 12px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .contact {
+      display: grid;
+      gap: 8px;
+      color: var(--muted);
+    }
+
+    .contact a {
+      color: var(--ink);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    footer {
+      max-width: var(--max-width);
+      margin: 22px auto 0;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: left;
+    }
+
+    .serif {
+      font-family: "Source Serif 4", "Space Grotesk", serif;
+    }
+
+    @media (min-width: 900px) {
+      .columns {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Albert Shen</div>
+    <nav>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <h1>Building thoughtful products that balance craft and clarity.</h1>
+      <p>Product-minded engineer based in [City]. I design and ship reliable experiences across web and mobile, with a focus on fast iteration and clear storytelling.</p>
+      <div class="meta">
+        <div class="pill">Available for new opportunities</div>
+        <div class="muted">Open to collaborations · Speaking engagements</div>
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="mailto:your-email@example.com">Email me</a>
+        <a class="btn secondary" href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="btn secondary" href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Selected Projects</h2>
+      <div class="grid">
+        <div class="project-card">
+          <h3>Project Aurora</h3>
+          <p>Analytics dashboard for product teams with real-time cohort insights and alerts.</p>
+          <div class="tags">
+            <span class="tag">React</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">PostgreSQL</span>
+          </div>
+          <a class="link" href="#" target="_blank" rel="noreferrer">View case study →</a>
+        </div>
+        <div class="project-card">
+          <h3>Field Notes</h3>
+          <p>Mobile-first notes app with offline sync and a playful, tactile UI.</p>
+          <div class="tags">
+            <span class="tag">Flutter</span>
+            <span class="tag">Firebase</span>
+          </div>
+          <a class="link" href="#" target="_blank" rel="noreferrer">See on GitHub →</a>
+        </div>
+        <div class="project-card">
+          <h3>Studio Palette</h3>
+          <p>Color system generator that exports design tokens and previews accessibility.</p>
+          <div class="tags">
+            <span class="tag">Vue</span>
+            <span class="tag">Design Systems</span>
+          </div>
+          <a class="link" href="#" target="_blank" rel="noreferrer">Live preview →</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>Senior Software Engineer · Example Corp</h3>
+          <p class="role">2021 — Present · San Francisco, CA</p>
+          <ul>
+            <li>Led migration to a modular design system, cutting UI build time by 30%.</li>
+            <li>Shipped experimentation platform that increased conversion by 8%.</li>
+          </ul>
+        </div>
+        <div class="timeline-item">
+          <h3>Software Engineer · StartUp Labs</h3>
+          <p class="role">2018 — 2021 · Remote</p>
+          <ul>
+            <li>Built event-driven pipeline to process 50M+ events/day with 99.9% uptime.</li>
+            <li>Partnered with design on mobile onboarding that lifted activation by 12%.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="columns">
+      <div>
+        <h2>Skills</h2>
+        <div class="skills">
+          <span class="skill">TypeScript</span>
+          <span class="skill">React</span>
+          <span class="skill">Node.js</span>
+          <span class="skill">Python</span>
+          <span class="skill">SQL</span>
+          <span class="skill">System Design</span>
+          <span class="skill">Product Discovery</span>
+          <span class="skill">Technical Writing</span>
+        </div>
+      </div>
+      <div>
+        <h2>Highlights</h2>
+        <p class="serif">Recent wins, speaking topics, or certifications can live here. Use short blurbs to surface what makes you different.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact">
+        <span>Drop a line if you want to talk about roles, collaborations, or side projects.</span>
+        <a href="mailto:your-email@example.com">your-email@example.com</a>
+        <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Crafted with curiosity. Last updated <span id="updated"></span>.
+  </footer>
+
+  <script>
+    const updated = document.getElementById("updated");
+    const date = new Date();
+    const options = { year: "numeric", month: "short" };
+    updated.textContent = date.toLocaleDateString("en-US", options);
+  </script>
+</body>
+</html>
