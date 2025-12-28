@@ -143,6 +143,59 @@
       transform: scaleX(1);
     }
 
+    .nav-rail {
+      max-width: var(--max-width);
+      margin: -6px auto 18px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      padding: 10px 12px;
+      background: rgba(19, 17, 12, 0.04);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(6px);
+      animation: riseUp 0.7s ease forwards;
+      opacity: 0;
+    }
+
+    .rail-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 8px;
+      align-items: center;
+      padding: 10px;
+      border-radius: 12px;
+      transition: transform 0.18s ease, background 0.18s ease;
+    }
+
+    .rail-item:hover {
+      background: #fff;
+      transform: translateY(-2px);
+    }
+
+    .rail-label {
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .rail-sub {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.03);
+    }
+
+    .dot.projects { background: var(--accent); }
+    .dot.experience { background: var(--accent-2); }
+    .dot.skills { background: #0fa36b; }
+    .dot.contact { background: #f5a524; }
+
     .shell {
       max-width: var(--max-width);
       margin: 0 auto;
@@ -421,6 +474,11 @@
       font-family: "Source Serif 4", "Space Grotesk", serif;
     }
 
+    /* Anchor offset and scroll positioning */
+    section {
+      scroll-margin-top: 120px;
+    }
+
     main section:nth-of-type(1) { animation-delay: 0.05s; }
     main section:nth-of-type(2) { animation-delay: 0.12s; }
     main section:nth-of-type(3) { animation-delay: 0.18s; }
@@ -495,6 +553,36 @@
       <a href="#contact">Contact</a>
     </nav>
   </header>
+  <div class="nav-rail">
+    <div class="rail-item">
+      <div class="dot projects"></div>
+      <div>
+        <div class="rail-label">Projects</div>
+        <div class="rail-sub">Recent builds & case studies</div>
+      </div>
+    </div>
+    <div class="rail-item">
+      <div class="dot experience"></div>
+      <div>
+        <div class="rail-label">Experience</div>
+        <div class="rail-sub">Roles, impact, leadership</div>
+      </div>
+    </div>
+    <div class="rail-item">
+      <div class="dot skills"></div>
+      <div>
+        <div class="rail-label">Skills</div>
+        <div class="rail-sub">Stacks & strengths</div>
+      </div>
+    </div>
+    <div class="rail-item">
+      <div class="dot contact"></div>
+      <div>
+        <div class="rail-label">Contact</div>
+        <div class="rail-sub">Let’s collaborate</div>
+      </div>
+    </div>
+  </div>
 
   <main class="shell">
     <section class="hero">
@@ -603,6 +691,23 @@
   </footer>
 
   <script>
+    // Offset smooth-scroll to account for sticky banner/nav
+    const OFFSET = 90;
+    const navLinks = document.querySelectorAll("nav a[href^='#']");
+    navLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute("href"));
+        if (!target) return;
+        const rect = target.getBoundingClientRect();
+        const absoluteY = rect.top + window.scrollY;
+        window.scrollTo({
+          top: absoluteY - OFFSET,
+          behavior: "smooth"
+        });
+      });
+    });
+
     const updated = document.getElementById("updated");
     const date = new Date();
     const options = { year: "numeric", month: "short" };
