@@ -34,6 +34,9 @@
       color: var(--ink);
       line-height: 1.6;
       padding: 32px 18px 64px;
+      scroll-behavior: smooth;
+      opacity: 0;
+      animation: fadeInPage 0.8s ease forwards;
     }
 
     header {
@@ -59,11 +62,31 @@
       padding: 8px 10px;
       border-radius: 999px;
       transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
     }
 
     nav a:hover {
       color: var(--ink);
       background: rgba(19, 17, 12, 0.06);
+      transform: translateY(-1px);
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 6px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+
+    nav a:hover::after {
+      transform: scaleX(1);
     }
 
     .shell {
@@ -79,6 +102,10 @@
       border-radius: var(--radius);
       padding: 26px 28px;
       box-shadow: var(--shadow);
+      opacity: 0;
+      transform: translateY(12px);
+      animation: riseUp 0.75s cubic-bezier(0.18, 0.72, 0.24, 1) forwards;
+      animation-delay: 0.05s;
     }
 
     .hero {
@@ -87,6 +114,8 @@
       background: linear-gradient(115deg, rgba(242, 92, 84, 0.07), rgba(61, 139, 253, 0.05)), var(--panel);
       overflow: hidden;
       position: relative;
+      background-size: 140% 140%;
+      animation: gradientDrift 14s ease-in-out infinite;
     }
 
     .hero::after {
@@ -95,6 +124,7 @@
       inset: 0;
       background: radial-gradient(circle at 60% 50%, rgba(61, 139, 253, 0.08), transparent 40%);
       pointer-events: none;
+      animation: floatGlow 12s ease-in-out infinite;
     }
 
     .hero h1 {
@@ -103,6 +133,8 @@
       letter-spacing: -0.04em;
       position: relative;
       z-index: 1;
+      animation: fadeSlide 0.8s ease forwards;
+      opacity: 0;
     }
 
     .hero p {
@@ -112,6 +144,9 @@
       font-size: 18px;
       position: relative;
       z-index: 1;
+      animation: fadeSlide 0.9s ease forwards;
+      opacity: 0;
+      animation-delay: 0.08s;
     }
 
     .meta {
@@ -121,6 +156,9 @@
       flex-wrap: wrap;
       position: relative;
       z-index: 1;
+      animation: fadeSlide 1s ease forwards;
+      opacity: 0;
+      animation-delay: 0.14s;
     }
 
     .meta .pill {
@@ -143,6 +181,9 @@
       flex-wrap: wrap;
       position: relative;
       z-index: 1;
+      animation: fadeSlide 1.1s ease forwards;
+      opacity: 0;
+      animation-delay: 0.2s;
     }
 
     .btn {
@@ -177,6 +218,11 @@
       border: 1px solid var(--border);
     }
 
+    .btn:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
     h2 {
       margin: 0 0 12px;
       font-size: 20px;
@@ -194,12 +240,29 @@
       padding: 16px 18px;
       transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
       background: #fffdfa;
+      position: relative;
+      overflow: hidden;
     }
 
     .project-card:hover {
       transform: translateY(-2px);
       box-shadow: 0 16px 26px rgba(12, 10, 8, 0.12);
       border-color: rgba(242, 92, 84, 0.35);
+    }
+
+    .project-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(242, 92, 84, 0.08), rgba(61, 139, 253, 0.08));
+      transform: translateX(-70%);
+      opacity: 0;
+      transition: transform 0.35s ease, opacity 0.35s ease;
+    }
+
+    .project-card:hover::after {
+      transform: translateX(0);
+      opacity: 1;
     }
 
     .project-card h3 {
@@ -261,6 +324,9 @@
       margin: 0;
       padding-left: 18px;
       color: var(--muted);
+      animation: fadeSlide 0.8s ease forwards;
+      opacity: 0;
+      animation-delay: 0.1s;
     }
 
     .skills {
@@ -301,11 +367,59 @@
       font-family: "Source Serif 4", "Space Grotesk", serif;
     }
 
+    main section:nth-of-type(1) { animation-delay: 0.05s; }
+    main section:nth-of-type(2) { animation-delay: 0.12s; }
+    main section:nth-of-type(3) { animation-delay: 0.18s; }
+    main section:nth-of-type(4) { animation-delay: 0.24s; }
+    main section:nth-of-type(5) { animation-delay: 0.3s; }
+
     @media (min-width: 900px) {
       .columns {
         display: grid;
         grid-template-columns: 2fr 1fr;
         gap: 14px;
+      }
+    }
+
+    @keyframes fadeInPage {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes riseUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatGlow {
+      0% { transform: translateY(0) scale(1); opacity: 0.8; }
+      50% { transform: translateY(-10px) scale(1.04); opacity: 1; }
+      100% { transform: translateY(0) scale(1); opacity: 0.8; }
+    }
+
+    @keyframes gradientDrift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+      body {
+        opacity: 1 !important;
+      }
+      section, .hero h1, .hero p, .meta, .actions, .timeline-item ul {
+        opacity: 1 !important;
+        transform: none !important;
       }
     }
   </style>
