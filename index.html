@@ -75,6 +75,30 @@
       background: var(--border);
     }
 
+    .top-links {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: 14px;
+      padding: 6px 10px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.65);
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 24px rgba(12, 10, 8, 0.12);
+    }
+
+    .top-links a {
+      color: var(--ink);
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: 10px;
+    }
+
+    .top-links a:hover {
+      background: rgba(19, 17, 12, 0.08);
+      transform: translateY(-1px);
+    }
+
     .spacer {
       flex: 1;
     }
@@ -95,7 +119,7 @@
 
     header {
       max-width: var(--max-width);
-      margin: 0 auto 24px;
+      margin: 0 auto 12px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -107,94 +131,6 @@
       letter-spacing: -0.03em;
       font-size: 18px;
     }
-
-    nav a {
-      color: var(--muted);
-      text-decoration: none;
-      margin-left: 12px;
-      font-size: 14px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      transition: all 0.2s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    nav a:hover {
-      color: var(--ink);
-      background: rgba(19, 17, 12, 0.06);
-      transform: translateY(-1px);
-    }
-
-    nav a::after {
-      content: "";
-      position: absolute;
-      left: 12px;
-      right: 12px;
-      bottom: 6px;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.25s ease;
-    }
-
-    nav a:hover::after {
-      transform: scaleX(1);
-    }
-
-    .nav-rail {
-      max-width: var(--max-width);
-      margin: -6px auto 18px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 10px;
-      padding: 10px 12px;
-      background: rgba(19, 17, 12, 0.04);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(6px);
-      animation: riseUp 0.7s ease forwards;
-      opacity: 0;
-    }
-
-    .rail-item {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 8px;
-      align-items: center;
-      padding: 10px;
-      border-radius: 12px;
-      transition: transform 0.18s ease, background 0.18s ease;
-    }
-
-    .rail-item:hover {
-      background: #fff;
-      transform: translateY(-2px);
-    }
-
-    .rail-label {
-      font-weight: 700;
-      color: var(--ink);
-    }
-
-    .rail-sub {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.03);
-    }
-
-    .dot.projects { background: var(--accent); }
-    .dot.experience { background: var(--accent-2); }
-    .dot.skills { background: #0fa36b; }
-    .dot.contact { background: #f5a524; }
 
     .shell {
       max-width: var(--max-width);
@@ -242,6 +178,7 @@
       z-index: 1;
       animation: fadeSlide 0.8s ease forwards;
       opacity: 0;
+      color: #0b0b0b;
     }
 
     .hero p {
@@ -254,6 +191,7 @@
       animation: fadeSlide 0.9s ease forwards;
       opacity: 0;
       animation-delay: 0.08s;
+      color: #312c24;
     }
 
     .meta {
@@ -541,48 +479,18 @@
     <div class="badge">Product Engineer</div>
     <div class="divider"></div>
     <span>Based in [City] · Open to opportunities</span>
+    <div class="top-links" aria-label="Primary">
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
     <div class="spacer"></div>
     <a class="mini-link" href="mailto:your-email@example.com">Say hello →</a>
   </div>
   <header>
     <div class="logo">Albert Shen</div>
-    <nav>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </nav>
   </header>
-  <div class="nav-rail">
-    <div class="rail-item">
-      <div class="dot projects"></div>
-      <div>
-        <div class="rail-label">Projects</div>
-        <div class="rail-sub">Recent builds & case studies</div>
-      </div>
-    </div>
-    <div class="rail-item">
-      <div class="dot experience"></div>
-      <div>
-        <div class="rail-label">Experience</div>
-        <div class="rail-sub">Roles, impact, leadership</div>
-      </div>
-    </div>
-    <div class="rail-item">
-      <div class="dot skills"></div>
-      <div>
-        <div class="rail-label">Skills</div>
-        <div class="rail-sub">Stacks & strengths</div>
-      </div>
-    </div>
-    <div class="rail-item">
-      <div class="dot contact"></div>
-      <div>
-        <div class="rail-label">Contact</div>
-        <div class="rail-sub">Let’s collaborate</div>
-      </div>
-    </div>
-  </div>
 
   <main class="shell">
     <section class="hero">
@@ -691,9 +599,9 @@
   </footer>
 
   <script>
-    // Offset smooth-scroll to account for sticky banner/nav
+    // Offset smooth-scroll to account for sticky banner
     const OFFSET = 90;
-    const navLinks = document.querySelectorAll("nav a[href^='#']");
+    const navLinks = document.querySelectorAll(".top-links a[href^='#']");
     navLinks.forEach((link) => {
       link.addEventListener("click", (e) => {
         e.preventDefault();
