@@ -405,6 +405,27 @@
     }
 
     .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+
+    .skill-group {
+      padding: 12px;
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.7);
+      display: grid;
+      gap: 8px;
+    }
+
+    .skill-title {
+      font-weight: 700;
+      color: var(--ink);
+      font-size: 14px;
+    }
+
+    .skill-chips {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
@@ -412,10 +433,10 @@
 
     .skill {
       background: rgba(19, 17, 12, 0.08);
-      padding: 8px 12px;
-      border-radius: 12px;
+      padding: 7px 11px;
+      border-radius: 11px;
       font-weight: 600;
-      font-size: 14px;
+      font-size: 13px;
     }
 
     .contact {
@@ -627,29 +648,70 @@
       <div>
         <h2>Skills</h2>
         <div class="skills">
-          <span class="skill">Java</span>
-          <span class="skill">Python</span>
-          <span class="skill">JavaScript</span>
-          <span class="skill">C#</span>
-          <span class="skill">C++</span>
-          <span class="skill">AWS Lambda</span>
-          <span class="skill">Kubernetes</span>
-          <span class="skill">Docker</span>
-          <span class="skill">Azure Functions</span>
-          <span class="skill">SQL Server</span>
-          <span class="skill">PostgreSQL</span>
-          <span class="skill">NoSQL</span>
-          <span class="skill">ElasticSearch</span>
-          <span class="skill">Redis</span>
-          <span class="skill">Kafka</span>
-          <span class="skill">Airflow</span>
-          <span class="skill">React Native</span>
-          <span class="skill">Node.js</span>
-          <span class="skill">Django</span>
-          <span class="skill">Flask</span>
-          <span class="skill">Jenkins</span>
-          <span class="skill">Git</span>
-          <span class="skill">Agile/Scrum</span>
+          <div class="skill-group">
+            <div class="skill-title">Languages</div>
+            <div class="skill-chips">
+              <span class="skill">Java</span>
+              <span class="skill">Python</span>
+              <span class="skill">JavaScript</span>
+              <span class="skill">C#</span>
+              <span class="skill">C++</span>
+              <span class="skill">R</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-title">Cloud & Infra</div>
+            <div class="skill-chips">
+              <span class="skill">AWS Lambda</span>
+              <span class="skill">Kubernetes</span>
+              <span class="skill">Docker</span>
+              <span class="skill">Azure Functions</span>
+              <span class="skill">Azure App Service</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-title">Data & Analytics</div>
+            <div class="skill-chips">
+              <span class="skill">ElasticSearch</span>
+              <span class="skill">Redis</span>
+              <span class="skill">Kafka</span>
+              <span class="skill">Airflow</span>
+              <span class="skill">pandas</span>
+              <span class="skill">numpy</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-title">Datastores</div>
+            <div class="skill-chips">
+              <span class="skill">SQL Server</span>
+              <span class="skill">PostgreSQL</span>
+              <span class="skill">MySQL</span>
+              <span class="skill">SQLite</span>
+              <span class="skill">NoSQL</span>
+              <span class="skill">MongoDB</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-title">Web & Mobile</div>
+            <div class="skill-chips">
+              <span class="skill">React Native</span>
+              <span class="skill">Node.js</span>
+              <span class="skill">Django</span>
+              <span class="skill">Flask</span>
+              <span class="skill">HTML/CSS</span>
+              <span class="skill">jQuery</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-title">DevOps & Practices</div>
+            <div class="skill-chips">
+              <span class="skill">Jenkins</span>
+              <span class="skill">Git/GitLab/GitHub</span>
+              <span class="skill">CI/CD</span>
+              <span class="skill">Agile/Scrum</span>
+              <span class="skill">REST APIs</span>
+            </div>
+          </div>
         </div>
       </div>
       <div>
