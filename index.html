@@ -406,37 +406,82 @@
 
     .skills {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+    }
+
+    .skill-section {
+      display: grid;
       gap: 12px;
     }
 
-    .skill-group {
-      padding: 12px;
-      border: 1px dashed var(--border);
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.7);
-      display: grid;
-      gap: 8px;
+    .skill-title {
+      text-align: center;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      position: relative;
+      padding-bottom: 6px;
     }
 
-    .skill-title {
+    .skill-title::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 64px;
+      height: 4px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+
+    .skill-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      justify-items: center;
+    }
+
+    .skill-card {
+      width: 100%;
+      max-width: 170px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: #fffdfa;
+      box-shadow: 0 10px 24px rgba(12, 10, 8, 0.08);
+      padding: 12px;
+      display: grid;
+      place-items: center;
+      gap: 10px;
+      transition: transform 0.18s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 32px rgba(12, 10, 8, 0.14);
+      border-color: rgba(61, 139, 253, 0.45);
+    }
+
+    .skill-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 12px;
+      background: var(--icon-bg, linear-gradient(135deg, #f25c54 0%, #f2c14f 100%));
+      display: grid;
+      place-items: center;
+      color: #0b0b0b;
+      font-weight: 800;
+      font-size: 16px;
+      letter-spacing: -0.02em;
+      box-shadow: 0 6px 16px rgba(12, 10, 8, 0.12);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .skill-label {
       font-weight: 700;
       color: var(--ink);
-      font-size: 14px;
-    }
-
-    .skill-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .skill {
-      background: rgba(19, 17, 12, 0.08);
-      padding: 7px 11px;
-      border-radius: 11px;
-      font-weight: 600;
+      text-align: center;
       font-size: 13px;
+      line-height: 1.3;
     }
 
     .contact {
@@ -479,6 +524,9 @@
         display: grid;
         grid-template-columns: 2fr 1fr;
         gap: 14px;
+      }
+      .skill-row {
+        justify-items: start;
       }
     }
 
@@ -546,7 +594,7 @@
       <a href="#contact">Contact</a>
     </div>
     <div class="divider"></div>
-    <span>Based in [City] · Open to opportunities</span>
+    <span>Based in Philadelphia · Open to opportunities</span>
     <div class="spacer"></div>
     <a class="mini-link" href="mailto:your-email@example.com">Say hello →</a>
   </div>
@@ -557,7 +605,7 @@
   <main class="shell">
     <section class="hero">
       <h1>Software engineer blending statistics, cloud, and product craft.</h1>
-      <p>Seattle-based engineer with experience across backend services, data products, and mobile apps. I like turning messy datasets into clear experiences and shipping tools that stay fast at scale.</p>
+      <p>Philadelphia-based engineer with experience across backend services, data products, and mobile apps. I like turning messy datasets into clear experiences and shipping tools that stay fast at scale.</p>
       <div class="meta">
         <div class="pill">Currently at CVS Health(Aetna)</div>
         <div class="muted">Early-impact contributor · Data-minded builder</div>
@@ -648,68 +696,170 @@
       <div>
         <h2>Skills</h2>
         <div class="skills">
-          <div class="skill-group">
-            <div class="skill-title">Languages</div>
-            <div class="skill-chips">
-              <span class="skill">Java</span>
-              <span class="skill">Python</span>
-              <span class="skill">JavaScript</span>
-              <span class="skill">C#</span>
-              <span class="skill">C++</span>
-              <span class="skill">R</span>
+          <div class="skill-section">
+            <div class="skill-title">Programming Languages</div>
+            <div class="skill-row">
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="Java" style="--icon-bg: linear-gradient(135deg,#f2b134,#f25c54);">Java</div>
+                <div class="skill-label">Java</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="Py" style="--icon-bg: linear-gradient(135deg,#f2c94c,#2f80ed);">Py</div>
+                <div class="skill-label">Python</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="JS" style="--icon-bg: linear-gradient(135deg,#f2e94e,#f7b733);">JS</div>
+                <div class="skill-label">JavaScript</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="C#" style="--icon-bg: linear-gradient(135deg,#6c63ff,#b388ff);">C#</div>
+                <div class="skill-label">C#</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="C++" style="--icon-bg: linear-gradient(135deg,#3d8bfd,#6fb2ff);">C++</div>
+                <div class="skill-label">C++</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="R" style="--icon-bg: linear-gradient(135deg,#4ac0e0,#5e7efc);">R</div>
+                <div class="skill-label">R</div>
+              </div>
             </div>
           </div>
-          <div class="skill-group">
-            <div class="skill-title">Cloud & Infra</div>
-            <div class="skill-chips">
-              <span class="skill">AWS Lambda</span>
-              <span class="skill">Kubernetes</span>
-              <span class="skill">Docker</span>
-              <span class="skill">Azure Functions</span>
-              <span class="skill">Azure App Service</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <div class="skill-title">Data & Analytics</div>
-            <div class="skill-chips">
-              <span class="skill">ElasticSearch</span>
-              <span class="skill">Redis</span>
-              <span class="skill">Kafka</span>
-              <span class="skill">Airflow</span>
-              <span class="skill">pandas</span>
-              <span class="skill">numpy</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <div class="skill-title">Datastores</div>
-            <div class="skill-chips">
-              <span class="skill">SQL Server</span>
-              <span class="skill">PostgreSQL</span>
-              <span class="skill">MySQL</span>
-              <span class="skill">SQLite</span>
-              <span class="skill">NoSQL</span>
-              <span class="skill">MongoDB</span>
-            </div>
-          </div>
-          <div class="skill-group">
+          <div class="skill-section">
             <div class="skill-title">Web & Mobile</div>
-            <div class="skill-chips">
-              <span class="skill">React Native</span>
-              <span class="skill">Node.js</span>
-              <span class="skill">Django</span>
-              <span class="skill">Flask</span>
-              <span class="skill">HTML/CSS</span>
-              <span class="skill">jQuery</span>
+            <div class="skill-row">
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="RN" style="--icon-bg: linear-gradient(135deg,#00c6ff,#0072ff);">RN</div>
+                <div class="skill-label">React Native</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="Node" style="--icon-bg: linear-gradient(135deg,#6dd5ed,#2193b0);">Node</div>
+                <div class="skill-label">Node.js</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="Dj" style="--icon-bg: linear-gradient(135deg,#0fa36b,#29c27f);">Dj</div>
+                <div class="skill-label">Django</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="Fl" style="--icon-bg: linear-gradient(135deg,#f7d794,#f6b93b);">Fl</div>
+                <div class="skill-label">Flask</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="HTML" style="--icon-bg: linear-gradient(135deg,#ff9966,#ff5e62);">HTML/CSS</div>
+                <div class="skill-label">HTML/CSS</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="jQ" style="--icon-bg: linear-gradient(135deg,#5f2c82,#49a09d);">jQ</div>
+                <div class="skill-label">jQuery</div>
+              </div>
             </div>
           </div>
-          <div class="skill-group">
+          <div class="skill-section">
+            <div class="skill-title">Back-End & Databases</div>
+            <div class="skill-row">
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="SQL" style="--icon-bg: linear-gradient(135deg,#8ec5fc,#e0c3fc);">SQL</div>
+                <div class="skill-label">SQL Server</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="PG" style="--icon-bg: linear-gradient(135deg,#74ebd5,#9face6);">PG</div>
+                <div class="skill-label">PostgreSQL</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="My" style="--icon-bg: linear-gradient(135deg,#ffecd2,#fcb69f);">My</div>
+                <div class="skill-label">MySQL</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="SQ" style="--icon-bg: linear-gradient(135deg,#89f7fe,#66a6ff);">SQ</div>
+                <div class="skill-label">SQLite</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="No" style="--icon-bg: linear-gradient(135deg,#fbc2eb,#a6c1ee);">No</div>
+                <div class="skill-label">NoSQL</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="MG" style="--icon-bg: linear-gradient(135deg,#00b09b,#96c93d);">MG</div>
+                <div class="skill-label">MongoDB</div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-section">
+            <div class="skill-title">Cloud & Infra</div>
+            <div class="skill-row">
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="AWS" style="--icon-bg: linear-gradient(135deg,#f2994a,#f2c94c);">AWS</div>
+                <div class="skill-label">AWS Lambda</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="K8s" style="--icon-bg: linear-gradient(135deg,#4facfe,#00f2fe);">K8s</div>
+                <div class="skill-label">Kubernetes</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="Docker" style="--icon-bg: linear-gradient(135deg,#2193b0,#6dd5ed);">Docker</div>
+                <div class="skill-label">Docker</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="Az" style="--icon-bg: linear-gradient(135deg,#56ccf2,#2f80ed);">Az</div>
+                <div class="skill-label">Azure Functions</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="App" style="--icon-bg: linear-gradient(135deg,#c471f5,#fa71cd);">App</div>
+                <div class="skill-label">Azure App Service</div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-section">
+            <div class="skill-title">Data & Analytics</div>
+            <div class="skill-row">
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="ES" style="--icon-bg: linear-gradient(135deg,#f857a6,#ff5858);">ES</div>
+                <div class="skill-label">ElasticSearch</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="Redis" style="--icon-bg: linear-gradient(135deg,#f85032,#e73827);">Redis</div>
+                <div class="skill-label">Redis</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="Kafka" style="--icon-bg: linear-gradient(135deg,#ff9a9e,#fecfef);">Kafka</div>
+                <div class="skill-label">Kafka</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="AF" style="--icon-bg: linear-gradient(135deg,#36d1dc,#5b86e5);">AF</div>
+                <div class="skill-label">Airflow</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="pd" style="--icon-bg: linear-gradient(135deg,#a1c4fd,#c2e9fb);">pd</div>
+                <div class="skill-label">pandas</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="np" style="--icon-bg: linear-gradient(135deg,#ffecd2,#fcb69f);">np</div>
+                <div class="skill-label">numpy</div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-section">
             <div class="skill-title">DevOps & Practices</div>
-            <div class="skill-chips">
-              <span class="skill">Jenkins</span>
-              <span class="skill">Git/GitLab/GitHub</span>
-              <span class="skill">CI/CD</span>
-              <span class="skill">Agile/Scrum</span>
-              <span class="skill">REST APIs</span>
+            <div class="skill-row">
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="CI" style="--icon-bg: linear-gradient(135deg,#f5af19,#f12711);">CI</div>
+                <div class="skill-label">CI/CD</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="Jen" style="--icon-bg: linear-gradient(135deg,#ffafbd,#ffc3a0);">Jen</div>
+                <div class="skill-label">Jenkins</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="Git" style="--icon-bg: linear-gradient(135deg,#f83600,#f9d423);">Git</div>
+                <div class="skill-label">Git/GitLab/GitHub</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="Ag" style="--icon-bg: linear-gradient(135deg,#fc5c7d,#6a82fb);">Ag</div>
+                <div class="skill-label">Agile/Scrum</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon" data-letter="API" style="--icon-bg: linear-gradient(135deg,#52c234,#061700); color: #fff;">API</div>
+                <div class="skill-label">REST APIs</div>
+              </div>
             </div>
           </div>
         </div>
