@@ -509,6 +509,28 @@
       color: var(--ink);
       font-weight: 600;
       text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      line-height: 1.1;
+    }
+
+    .contact-icon {
+      width: 26px;
+      height: 26px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      background: rgba(19, 17, 12, 0.06);
+      border: 1px solid var(--border);
+      box-shadow: 0 6px 12px rgba(12, 10, 8, 0.08);
+      flex-shrink: 0;
+    }
+
+    .contact-icon svg {
+      width: 16px;
+      height: 16px;
     }
 
     footer {
@@ -901,9 +923,9 @@
       <h2>Contact</h2>
       <div class="contact">
         <span>Drop a line if you want to talk about roles, collaborations, or side projects.</span>
-        <a href="mailto:albertshen31@gmail.com">albertshen31@gmail.com</a>
-        <a href="https://www.linkedin.com/in/albert-w-shen" target="_blank" rel="noreferrer">linkedin.com/in/albert-w-shen</a>
-        <a href="https://github.com/AlbertShen31" target="_blank" rel="noreferrer">github.com/AlbertShen31</a>
+        <a href="mailto:albertshen31@gmail.com"><span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#icon-mail"/></svg></span> albertshen31@gmail.com</a>
+        <a href="https://www.linkedin.com/in/albert-w-shen" target="_blank" rel="noreferrer"><span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#icon-linkedin"/></svg></span> linkedin.com/in/albert-w-shen</a>
+        <a href="https://github.com/AlbertShen31" target="_blank" rel="noreferrer"><span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#icon-github"/></svg></span> github.com/AlbertShen31</a>
       </div>
     </section>
   </main>
