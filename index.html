@@ -407,6 +407,9 @@
     .skills {
       display: grid;
       gap: 18px;
+      justify-items: center;
+      max-width: 1120px;
+      margin: 0 auto;
     }
 
     .skill-section {
@@ -557,11 +560,6 @@
     main section:nth-of-type(5) { animation-delay: 0.3s; }
 
     @media (min-width: 900px) {
-      .columns {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: 14px;
-      }
       .skill-row {
         justify-items: start;
       }
@@ -729,7 +727,7 @@
       </div>
     </section>
 
-    <section id="skills" class="columns">
+    <section id="skills">
       <div>
         <h2>Skills</h2>
         <div class="skills">
@@ -912,10 +910,6 @@
             </div>
           </div>
         </div>
-      </div>
-      <div>
-        <h2>Highlights</h2>
-        <p class="serif">BS in Statistics &amp; Computer Science, UIUC (accelerated 3-year graduation; Dean’s List; James Scholar honors). Built data-driven products across e-commerce, analytics, and productivity.</p>
       </div>
     </section>
 
