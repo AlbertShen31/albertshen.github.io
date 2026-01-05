@@ -415,6 +415,7 @@
     .skill-section {
       display: grid;
       gap: 12px;
+      width: 100%;
     }
 
     .skill-title {
@@ -439,9 +440,11 @@
 
     .skill-row {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
       justify-items: center;
+      justify-content: center;
+      width: 100%;
     }
 
     .skill-card {
@@ -525,16 +528,21 @@
       align-items: center;
       justify-content: center;
       border-radius: 8px;
-      background: rgba(19, 17, 12, 0.06);
+      background: #ffffff;
       border: 1px solid var(--border);
       box-shadow: 0 6px 12px rgba(12, 10, 8, 0.08);
       flex-shrink: 0;
+      color: var(--ink);
     }
 
     .contact-icon svg {
       width: 16px;
       height: 16px;
     }
+
+    .contact-icon.mail { color: #d93025; }
+    .contact-icon.linkedin { color: #0a66c2; }
+    .contact-icon.github { color: #0b0b0b; }
 
     footer {
       max-width: var(--max-width);
@@ -917,9 +925,9 @@
       <h2>Contact</h2>
       <div class="contact">
         <span>Drop a line if you want to talk about roles, collaborations, or side projects.</span>
-        <a href="mailto:albertshen31@gmail.com"><span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#icon-mail"/></svg></span> albertshen31@gmail.com</a>
-        <a href="https://www.linkedin.com/in/albert-w-shen" target="_blank" rel="noreferrer"><span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#icon-linkedin"/></svg></span> linkedin.com/in/albert-w-shen</a>
-        <a href="https://github.com/AlbertShen31" target="_blank" rel="noreferrer"><span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#icon-github"/></svg></span> github.com/AlbertShen31</a>
+        <a href="mailto:albertshen31@gmail.com"><span class="contact-icon mail"><svg class="icon" aria-hidden="true"><use href="#icon-mail"/></svg></span> albertshen31@gmail.com</a>
+        <a href="https://www.linkedin.com/in/albert-w-shen" target="_blank" rel="noreferrer"><span class="contact-icon linkedin"><svg class="icon" aria-hidden="true"><use href="#icon-linkedin"/></svg></span> linkedin.com/in/albert-w-shen</a>
+        <a href="https://github.com/AlbertShen31" target="_blank" rel="noreferrer"><span class="contact-icon github"><svg class="icon" aria-hidden="true"><use href="#icon-github"/></svg></span> github.com/AlbertShen31</a>
       </div>
     </section>
   </main>
